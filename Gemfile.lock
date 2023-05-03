@@ -68,6 +68,7 @@ GEM
       tzinfo (~> 2.0)
     builder (3.2.4)
     concurrent-ruby (1.2.2)
+    connection_pool (2.2.5)
     crass (1.0.6)
     date (3.3.3)
     debug (1.7.2)
@@ -139,8 +140,13 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.0.6)
+    redis (4.8.0)
     reline (0.3.3)
       io-console (~> 0.5)
+    sidekiq (6.4.2)
+      connection_pool (>= 2.2.2)
+      rack (~> 2.0)
+      redis (>= 4.2.0)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -165,6 +171,7 @@ DEPENDENCIES
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.3)
+  sidekiq
   sprockets-rails
   tzinfo-data
 

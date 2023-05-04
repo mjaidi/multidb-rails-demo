@@ -5,3 +5,6 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+Tenant.create(name: "Tenant 1", subdomain: "", shard: "tenant_1")
+Tenant.create(name: "Tenant 2", subdomain: "br", shard: "tenant_2")

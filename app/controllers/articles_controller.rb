@@ -24,6 +24,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
 
     if @article.save
+      CleanupArticleJob.perform_later(@article.id)
       redirect_to @article, notice: "Article was successfully created."
     else
       render :new, status: :unprocessable_entity

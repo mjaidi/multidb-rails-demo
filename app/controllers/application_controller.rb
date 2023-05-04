@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
   private
 
   def set_tenant
-    Current.tenant = Tenant.find_by(shard: TenantSpecificRecord.connection.shard)
+    Current.tenant = Tenant.find_by!(shard: TenantSpecificRecord.connection.shard)
   end
 end

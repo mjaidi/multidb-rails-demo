@@ -3,7 +3,9 @@ module Middleware
   module MultiDb
     module Sidekiq
       class Server
-        include ::Sidekiq::ServerMiddleware
+        def initialize(optional_args = nil)
+          @args = optional_args
+        end
 
         def call(worker_class, job, queue)
           if job['shard']

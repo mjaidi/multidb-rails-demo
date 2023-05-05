@@ -7,11 +7,7 @@ Sidekiq.configure_server do |config|
   end
 
   config.server_middleware do |chain|
-    if defined?(::Sidekiq::Batch::Server)
-      chain.insert_before ::Sidekiq::Batch::Server, Middleware::MultiDb::Sidekiq::Server
-    else
-      chain.add Middleware::MultiDb::Sidekiq::Server
-    end
+    chain.add Middleware::MultiDb::Sidekiq::Server
   end
 end
 

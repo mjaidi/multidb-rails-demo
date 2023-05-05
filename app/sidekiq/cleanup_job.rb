@@ -1,5 +1,5 @@
-class CleanupArticleJob < ApplicationJob
-  queue_as :default
+class CleanupJob
+  include Sidekiq::Job
 
   def perform(article_id)
     article = Article.find(article_id)

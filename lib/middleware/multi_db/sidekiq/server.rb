@@ -3,15 +3,10 @@ module Middleware
   module MultiDb
     module Sidekiq
       class Server
-        def initialize(optional_args = nil)
-          @args = optional_args
-        end
+        include ::Sidekiq::ServerMiddleware
 
         def call(worker_class, job, queue)
-          if job['shard']
-            TenantSpecificRecord.establish_connection(ActiveRecord::Base.configurations.find_db_config(job['shard']))
-            yield
-          end
+          TenantSpecificRecord.establish_connection(ActiveRecord::Base.configurations.find_db_config(job['shard'])) if job['shard']
           yield
         end
       end
